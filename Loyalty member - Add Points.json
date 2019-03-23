@@ -1,0 +1,47 @@
+{
+	"info": {
+		"_postman_id": "9e308a72-0b8a-4b6e-9623-3c527ab25546",
+		"name": "Loyalty Staging - Add Points",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Add Points",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "text/xml",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:v1=\"http://atp.ihg.com/schema/crm/guest/units/servicetypes/v1\" xmlns:v11=\"http://atp.ihg.com/schema/common/ATPCommonServiceTypes/v1\" xmlns:v2=\"http://atp.ihg.com/schema/crm/common/crm/crmservice/datatypes/v2\" xmlns:v12=\"http://atp.ihg.com/schema/crm/guest/units/datatypes/v1\">\r\n   <soapenv:Header/>\r\n   <soapenv:Body>\r\n      <v1:createGoodwillEventRequest>\r\n         <atpHeader:header xmlns:atpHeader=\"http://atp.ihg.com/schema/common/ATPCommonServiceTypes/v1\">\r\n            <atpHeader:language isoCountryCode=\"US\" isoLanguageCode=\"en\"/>\r\n            <atpHeader:channel name=\"DT\">\r\n               <atpHeader:subChannel name=\"WEB\">\r\n                  <atpHeader:subChannel name=\"WEBWB\"/>\r\n                  <atpHeader:subChannel name=\"PointsDeposit\"/>\r\n               </atpHeader:subChannel>\r\n            </atpHeader:channel>\r\n            <atpHeader:headerVersion major=\"\" minor=\"\" build=\"\"/>\r\n            <atpHeader:environment name=\"dc4_int\"/>\r\n            <atpHeader:user id=\"AMER\\user1\"/>\r\n            <atpHeader:transactionId id=\"8b10be46-eea5-4fd4-9127-4648a94a1cf4 - SoapUI/MembershipService.Payments/ReactivationIsPossible(DE9289)/ReactivateMembership (AMB)(ccpsPayment, Points)/CreateGoodwillEvent (add 32000 PCR)\"/>\r\n            <atpHeader:sendTimeStamp>2018-05-31T15:42:58.752Z</atpHeader:sendTimeStamp>\r\n         </atpHeader:header>\r\n\r\n         <v1:goodwillEvents>\r\n            <v1:goodwillEvent reasonCode=\"A\">\r\n               <v12:amount loyaltyUnitCode=\"PCR\">32000</v12:amount>\r\n               <v12:destination programCode=\"PC\" memberId=\"{{loyaltyID}}\"/>\r\n               <v12:source code=\"SC\" locationCode=\"MEMDN\" channel=\"MSCUI\"/>\r\n            </v1:goodwillEvent>\r\n         </v1:goodwillEvents>\r\n      </v1:createGoodwillEventRequest>\r\n   </soapenv:Body>\r\n</soapenv:Envelope>\r\n"
+				},
+				"url": {
+					"raw": "http://iadd1-st1-gsa-ap.ihgint.global:8015/LoyaltyUnitsService?loyaltyID={{loyaltyID}}",
+					"protocol": "http",
+					"host": [
+						"iadd1-st1-gsa-ap",
+						"ihgint",
+						"global"
+					],
+					"port": "8015",
+					"path": [
+						"LoyaltyUnitsService"
+					],
+					"query": [
+						{
+							"key": "loyaltyID",
+							"value": "{{loyaltyID}}"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
